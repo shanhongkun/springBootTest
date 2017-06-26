@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Hello Page</title>
+</head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" />
+<body>
+
+	<!--
+	submitを利用する場合、当該画面にボタンがが1つのみの場合、th:action="@{/}"を利用する。
+	th:object="${Helloform}"　当該画面に対応するFormを指定する。
+	-->
+    <form method="post" th:action="@{/hello/}" th:object="${helloForm}">
+        名前：<input type="text" name="name" th:field="*{name}" />
+		<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">エラー</span>
+		パスワード：<input type="text" name="pass" th:field="*{pass}" />
+		<span th:if="${#fields.hasErrors('pass')}" th:errors="*{pass}">エラー</span>
+		パスワード確認：<input type="text" name="passConfirm" th:field="*{passConfirm}" />
+		<span th:if="${#fields.hasErrors('passConfirm')}" th:errors="*{passConfirm}">エラー</span>
+        <input type="submit" value="Click" />
+    </form>
+
+
+
+</body>
+</html>
